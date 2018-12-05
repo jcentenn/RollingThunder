@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   
   ngOnInit() {
 //      this.showData();
-//      this.appService.changeFavicon('https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png');
+      this.appService.changeFavicon('https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png');
       this.setTitle('Rolling Thunder');
     }
   
