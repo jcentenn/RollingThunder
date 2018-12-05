@@ -10,8 +10,8 @@ import { Title } from "@angular/platform-browser";
 })
 
 export class AppComponent implements OnInit {
-//  title = 'Rolling Thunder';
-  title = '.';
+  title = 'Rolling Thunder';
+//  title = '.';
   data: string;
   
   constructor(private appService: AppService, private titleService: Title ) { }
