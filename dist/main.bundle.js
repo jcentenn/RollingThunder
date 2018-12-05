@@ -70,7 +70,7 @@ var AppComponent = /** @class */ (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
         //      this.showData();
-        //      this.appService.changeFavicon('https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png');
+        this.appService.changeFavicon('https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png');
         this.setTitle('Rolling Thunder');
     };
     AppComponent.prototype.setTitle = function (newTitle) {
