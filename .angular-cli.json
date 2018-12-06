@@ -19,6 +19,9 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+		"../node_modules/primeng/resources/themes/luna-blue/theme.css",
+		"../node_modules/primeng/resources/primeng.min.css",
+		"../node_modules/primeicons/primeicons.css",
         "styles.css"
       ],
       "scripts": [],

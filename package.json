@@ -26,7 +26,9 @@
     "tslint-language-service": "^0.9.9",
     "zone.js": "^0.8.19",
     "file-saver": "latest",
-    "write-file": "latest"
+    "write-file": "latest",
+    "primeng": "^7.0.0",
+    "primeicons": "^1.0.0"
   },
   "devDependencies": {
     "@angular/cli": "1.6.8",

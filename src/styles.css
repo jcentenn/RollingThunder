@@ -1,3 +1,5 @@
+@import 'assets/css/rolling-thunder.css';
+
 html {
   padding: 0;
   margin: 0;
@@ -36,3 +38,4 @@ h1 {
     -ms-background-size: cover;
     background-size: cover;
 }
+

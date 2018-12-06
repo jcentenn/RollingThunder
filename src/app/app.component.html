@@ -1,10 +1,10 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"> -->
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
 
 <div class="topnav" id="myTopnav">
-  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+  <a class="active" href="#"><i class="fas fa-fw fa-home"></i> Home</a> 
 <!--   <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>  -->
-  <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+  <a href="#"><i class="fas fa-fw fa-envelope"></i> Contact</a> 
 <!--   <div class="dropdown"> -->
 <!--     <button class="dropbtn">Dropdown  -->
 <!--       <i class="fa fa-caret-down"></i> -->
@@ -15,7 +15,10 @@
 <!--       <a href="#">Link 3</a> -->
 <!--     </div> -->
 <!--   </div>    -->
-  <a href="#about"><i class="fa fa-fw fa-bolt"></i>About</a>
+  <a href="#about"><i class="fas fa-fw fa-bolt"></i>About</a>
+  
+  <a href="#rules"><i class="fas fa-fw fa-info"></i>Rules</a>
+  
   <a href="javascript:void(0);" class="icon" (click)="myFunction()">
     <i class="fa fa-bars"></i>
   </a>
@@ -23,9 +26,19 @@
 </div>
 
 <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}! - We are under construction
-  </h1>
+<!--   <h1> -->
+<!--     Welcome to {{ title }}! - We are under construction -->
+<!--   </h1> -->
   
 </div>
 
+<h3 class="first">Basic</h3>
+<p-menu [model]="items"></p-menu>
+
+<h3>Popup</h3>
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+<button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button>
+
+<!-- <div class="topnav"> -->
+<p-menubar  [model]="items" class="topnav"></p-menubar>
+<!-- </div> -->

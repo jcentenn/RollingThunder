@@ -1,0 +1,61 @@
+body .ui-menu .ui-menuitem-link,
+body .ui-menubar .ui-menuitem-link,
+body .ui-tieredmenu .ui-menuitem-link,
+body .ui-contextmenu .ui-menuitem-link,
+body .ui-megamenu .ui-menuitem-link,
+body .ui-slidemenu .ui-menuitem-link {
+  padding: 0.714em 0.857em;
+  color: green;
+  font-weight: normal;
+  -moz-border-radius: 0;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+}
+
+body .ui-menu .ui-menuitem-link:hover,
+body .ui-menubar .ui-menuitem-link:hover,
+body .ui-tieredmenu .ui-menuitem-link:hover,
+body .ui-contextmenu .ui-menuitem-link:hover,
+body .ui-megamenu .ui-menuitem-link:hover,
+body .ui-slidemenu .ui-menuitem-link:hover {
+  background-color: blue;
+}
+
+body .ui-menu .ui-menuitem-link .ui-menuitem-text,
+body .ui-menubar .ui-menuitem-link .ui-menuitem-text,
+body .ui-tieredmenu .ui-menuitem-link .ui-menuitem-text,
+body .ui-contextmenu .ui-menuitem-link .ui-menuitem-text,
+body .ui-megamenu .ui-menuitem-link .ui-menuitem-text,
+body .ui-slidemenu .ui-menuitem-link .ui-menuitem-text {
+	color: green;	
+}
+
+body .ui-menu .ui-menuitem-link .ui-menuitem-icon,
+body .ui-menubar .ui-menuitem-link .ui-menuitem-icon,
+body .ui-tieredmenu .ui-menuitem-link .ui-menuitem-icon,
+body .ui-contextmenu .ui-menuitem-link .ui-menuitem-icon,
+body .ui-megamenu .ui-menuitem-link .ui-menuitem-icon,
+body .ui-slidemenu .ui-menuitem-link .ui-menuitem-icon {
+	color: green;	
+	margin-right: 0.5em;
+}
+
+body .ui-menu {
+  padding: 0;
+  background-color: white;
+  border: 1px solid red;
+}
+
+body .ui-menu .ui-submenu-header {
+  margin: 0;
+  padding: 0.714em 0.857em;
+  color: green;
+  background-color: white;
+  font-weight: 400;
+  border: 0 none;
+}
+body .ui-menu .ui-menu-separator {
+  border: 1px solid red;
+  border-width: 1px 0 0 0;
+}
+
