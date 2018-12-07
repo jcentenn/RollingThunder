@@ -3,7 +3,7 @@
 
 <div class="topnav" id="myTopnav">
   <a class="active" href="#"><i class="fas fa-fw fa-home"></i> Home</a> 
-<!--   <a href="#"><i class="fa fa-fw fa-search"></i> Search</a>  -->
+  <a href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
   <a href="#"><i class="fas fa-fw fa-envelope"></i> Contact</a> 
 <!--   <div class="dropdown"> -->
 <!--     <button class="dropbtn">Dropdown  -->
@@ -32,13 +32,20 @@
   
 </div>
 
+<!-- 
 <h3 class="first">Basic</h3>
 <p-menu [model]="items"></p-menu>
 
 <h3>Popup</h3>
 <p-menu #menu [popup]="true" [model]="items"></p-menu>
 <button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button>
-
+ -->
 <!-- <div class="topnav"> -->
-<p-menubar  [model]="items" class="topnav"></p-menubar>
+<p-menubar [model]="items" id="myTopnav2" class="topnav2">
+
+  <a appResponsiveMenu href="javascript:void(0);" class="icon" (click)="myFunction2()">
+    <i class="fa fa-bars"></i>
+  </a>
 <!-- </div> -->
+</p-menubar>
+

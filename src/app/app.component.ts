@@ -23,7 +23,12 @@ export class AppComponent implements OnInit {
 //      this.showData();
 //      this.appService.changeFavicon('https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png');
 //      this.setTitle('Rolling Thunder');
+      this.setItems();
       
+    }
+
+  
+  setItems() {
       this.items = [{
           label: 'File',
           items: [
@@ -35,11 +40,10 @@ export class AppComponent implements OnInit {
           label: 'Edit',
           items: [
               {label: 'Add User', icon: 'pi pi-fw pi-user-plus'},
-              {label: 'Remove User', icon: 'pi pi-fw pi-user-minus'}
+              {label: 'Remove', icon: 'pi pi-fw pi-user-minus'}
           ]
       }];
-      
-    }
+  }
   
   setTitle( newTitle: string) {
       this.titleService.setTitle( newTitle );
@@ -52,7 +56,18 @@ export class AppComponent implements OnInit {
 //            console.log(this.data);
         });
     }
-  
+
+  myFunction2() {
+      var x = document.getElementById("myTopnav2");
+      
+//      console.log(this.items);
+      
+      if (x.className === "topnav2") {
+          x.className += " responsive2";
+      } else {
+          x.className = "topnav2";
+      }
+  }
 
   myFunction() {
       var x = document.getElementById("myTopnav");

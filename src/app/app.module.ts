@@ -10,11 +10,13 @@ import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { CodeHighlighterModule } from 'primeng/codehighlighter';
+import { ResponsiveMenuDirective } from './responsive-menu.directive';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ResponsiveMenuDirective
   ],
   imports: [
     BrowserModule
