@@ -11,12 +11,16 @@ import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { CodeHighlighterModule } from 'primeng/codehighlighter';
 import { ResponsiveMenuDirective } from './responsive-menu.directive';
+import { AppRoutingModule } from "./app-routing.module";
+import { Router } from "@angular/router";
+import { RulesComponent } from "./rules/rules.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResponsiveMenuDirective
+    ResponsiveMenuDirective,
+    RulesComponent
   ],
   imports: [
     BrowserModule
@@ -26,9 +30,15 @@ import { ResponsiveMenuDirective } from './responsive-menu.directive';
     , MenubarModule
     , ButtonModule
     , CodeHighlighterModule
+    , AppRoutingModule
   ],
   providers: [AppService, Title],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+    constructor(router: Router) {
+        
+    }
+    
+}
 

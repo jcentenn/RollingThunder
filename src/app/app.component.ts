@@ -54,20 +54,12 @@ export class AppComponent implements OnInit, AfterViewInit  {
 
   
   setItems() {
-      this.items = [{
-          label: 'File',
-          items: [
-              {label: 'New', icon: 'pi pi-fw pi-plus'},
-              {label: 'Download', icon: 'pi pi-fw pi-download'}
-          ]
-      },
-      {
-          label: 'Edit',
-          items: [
-              {label: 'Add User', icon: 'pi pi-fw pi-user-plus'},
-              {label: 'Remove', icon: 'pi pi-fw pi-user-minus'}
-          ]
-      }];
+      this.items = [
+           { label: 'Home', icon: 'fas fa-fw fa-home', routerLink: '/' }
+           , { label: 'Contact', icon: 'fas fa-fw fa-envelope' }
+           , { label: 'About', icon: 'fas fa-fw fa-bolt' }
+           , { label: 'Rules', icon: 'fas fa-fw fa-info', routerLink: 'rules'  }
+      ];
   }
   
   setTitle( newTitle: string) {
@@ -139,4 +131,5 @@ export class AppComponent implements OnInit, AfterViewInit  {
       }
   }
 }
+
 

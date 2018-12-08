@@ -6,6 +6,7 @@ p-menubar a {
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    background-color: #1F3357;
 }
 
 /* Hide the link that should open and close the topnav on small screens */
@@ -66,7 +67,7 @@ body .ui-contextmenu .ui-menuitem-link,
 body .ui-megamenu .ui-menuitem-link,
 body .ui-slidemenu .ui-menuitem-link {
   padding: 0.714em 0.857em;
-  color: green;
+  color: white;
   font-weight: normal;
   -moz-border-radius: 0;
   -webkit-border-radius: 0;
@@ -88,7 +89,7 @@ body .ui-tieredmenu .ui-menuitem-link .ui-menuitem-text,
 body .ui-contextmenu .ui-menuitem-link .ui-menuitem-text,
 body .ui-megamenu .ui-menuitem-link .ui-menuitem-text,
 body .ui-slidemenu .ui-menuitem-link .ui-menuitem-text {
-	color: green;	
+	color: white;	
 }
 
 body .ui-menu .ui-menuitem-link .ui-menuitem-icon,
@@ -97,7 +98,7 @@ body .ui-tieredmenu .ui-menuitem-link .ui-menuitem-icon,
 body .ui-contextmenu .ui-menuitem-link .ui-menuitem-icon,
 body .ui-megamenu .ui-menuitem-link .ui-menuitem-icon,
 body .ui-slidemenu .ui-menuitem-link .ui-menuitem-icon {
-	color: green;	
+	color: white;	
 	margin-right: 0.5em;
 }
 
