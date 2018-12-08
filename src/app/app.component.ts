@@ -91,8 +91,7 @@ export class AppComponent implements OnInit, AfterViewInit  {
       for (var menubarsub of menubarsubList) {
           if (menubarsub.hasAttribute("root")) {
               
-              console.log(menubarsub.style.display);
-//              menubarsub.hidden = false;
+              menubarsub.hidden = !menubarsub.hidden;
               
 //              this.renderer.setStyle(menubarsub, 'display', '');
                       
