@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit, Renderer2, RendererStyleFlags2, HostListener } from '@angular/core';
 import { AppService } from "./app.service";
 import { Title } from "@angular/platform-browser";
 import { MenuItem } from 'primeng/api';
+import { Menubar } from "primeng/menubar";
 
 
 @Component({
@@ -10,15 +11,39 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit  {
 //  title = 'Rolling Thunder';
 //  title = '.';
   data: string;
   
+    showNav: boolean = true;
+  
+    @HostListener('window:resize', ['$event'])
+    onResize(event) {
+        if (event.target.innerWidth < 900) {
+            console.log('mobile');
+        }
+        else {
+            console.log('desktop');
+        }
+    }
+
+    @ViewChild('topNav') topNav: Menubar;
+    @ViewChild('navButton') navButton: ElementRef;
+    
     items: MenuItem[];
 
-  constructor(private appService: AppService, private titleService: Title ) { }
+    
+    @ViewChildren("topNav") divs: QueryList<any>
+    
+  constructor(private appService: AppService, private titleService: Title, private renderer: Renderer2) { }
   
+    ngAfterViewInit() {
+        
+        console.log(window.innerWidth);
+//        console.log(this.topNav.el.nativeElement.children);
+     }
+    
   ngOnInit() {
 //      this.showData();
 //      this.appService.changeFavicon('https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png');
@@ -58,15 +83,52 @@ export class AppComponent implements OnInit {
     }
 
   myFunction2() {
-      var x = document.getElementById("myTopnav2");
+//      let topNav = document.getElementById("myTopnav2");
       
-//      console.log(this.items);
+      var menubarsubList: Array<HTMLElement> = this.topNav.el.nativeElement.getElementsByTagName("p-menubarsub"); 
       
-      if (x.className === "topnav2") {
-          x.className += " responsive2";
-      } else {
-          x.className = "topnav2";
+      
+      for (var menubarsub of menubarsubList) {
+          if (menubarsub.hasAttribute("root")) {
+              
+              console.log(menubarsub.style.display);
+//              menubarsub.hidden = false;
+              
+//              this.renderer.setStyle(menubarsub, 'display', '');
+                      
+//              setStyle(menubarsub, 'display', 'inline');
+              
+
+/*              
+              console.log(menubarsub.getElementsByTagName("li"));
+              
+              
+              if (!menubarsub.classList.contains('responsive2')) {
+                  this.renderer.addClass(menubarsub, 'responsive2');
+                  this.renderer.addClass(this.navButton.nativeElement, 'responsive2');
+//                  this.renderer.removeStyle(menubarsub, 'display', RendererStyleFlags2.Important);
+                  
+//                  this.showNav = false;
+                  
+                  
+              }
+              else {
+                  this.renderer.removeClass(menubarsub, 'responsive2');
+                  this.renderer.removeClass(this.navButton.nativeElement, 'responsive2');
+              }
+*/                        
+          }
+
       }
+      
+      
+      //y.hasAttribute("bar")     
+      
+//      if (topNav.className === "topnav2") {
+//          topNav.className += " responsive2";
+//      } else {
+//          topNav.className = "topnav2";
+//      }
   }
 
   myFunction() {
