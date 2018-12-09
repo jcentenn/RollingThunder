@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { AppService } from "../app.service";
 
-@Component({
-  selector: 'app-rules',
-  templateUrl: './rules.component.html',
-  styleUrls: ['./rules.component.css']
-})
-export class RulesComponent implements OnInit {
+@Component( {
+    selector: 'app-rules',
+    templateUrl: './rules.component.html',
+    styleUrls: ['./rules.component.css']
+} )
+export class RulesComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+    constructor( private appService: AppService ) { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
+    ngAfterViewInit() {
+        this.appService.changeTopMessage('Behold the Laws of Rolling Thunder');
+    }
 }
