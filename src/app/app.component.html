@@ -26,12 +26,6 @@
 <!--     <a href="#" class="login"><i class="fa fa-fw fa-user"></i> Login</a> -->
 <!-- </div> -->
 
-<div style="text-align:center">
-<!--   <h1> -->
-<!--     Welcome to {{ title }}! - We are under construction -->
-<!--   </h1> -->
-  
-</div>
 
 <!-- 
 <h3 class="first">Basic</h3>
@@ -42,6 +36,8 @@
 <button type="button" pButton icon="pi pi-bars" label="Show" (click)="menu.toggle($event)"></button>
  -->
 <!-- <div class="topnav"> -->
+
+
 <p-menubar #topNav [model]="items" id="myTopnav2" class="topnav2">
 
   <a #navButton href="javascript:void(0);" class="icon" (click)="myFunction2()">
@@ -51,5 +47,11 @@
 <!-- </div> -->
 </p-menubar>
 <!-- </div> -->
+
+ <h1>
+   <i class="fas fa-fw fa-bolt"></i> {{appService.topMessage}} <i class="fas fa-fw fa-bolt"></i>
+ </h1>
+  
+
 
 <router-outlet #routerOutlet="outlet"></router-outlet>

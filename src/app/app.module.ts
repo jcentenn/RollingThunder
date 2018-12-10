@@ -14,13 +14,15 @@ import { ResponsiveMenuDirective } from './responsive-menu.directive';
 import { AppRoutingModule } from "./app-routing.module";
 import { Router } from "@angular/router";
 import { RulesComponent } from "./rules/rules.component";
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ResponsiveMenuDirective,
-    RulesComponent
+    RulesComponent,
+    LandingPageComponent
   ],
   imports: [
     BrowserModule

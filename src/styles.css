@@ -1,11 +1,24 @@
 @import 'assets/css/rolling-thunder.css';
 
+@font-face {
+  font-family: 'Electrical';
+  src:  url('assets/fonts/electrical.woff2') format('woff2'),
+        url('assets/fonts/electrical.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'ALoveOfThunder';
+  src:  url('assets/fonts/ALoveOfThunder.woff2') format('woff2'),
+        url('assets/fonts/ALoveOfThunder.woff') format('woff');
+}
+
 html {
   padding: 0;
   margin: 0;
 }
 
 body {
+  font-family: 'ALoveOfThunder';
   background: #e3e3e3;
   min-height: 100vh;
   padding: 0;
@@ -32,7 +45,7 @@ h1 {
     height: 100%;
     z-index: -1;
     opacity: 0.55;
-    background-image: url(./assets/img/ClashRoyaleBackground02.png);
+    background-image: url(./assets/img/ClashRoyaleBackground02.jpg);
     background-repeat: no-repeat;
     background-position: 50% 0;
     -ms-background-size: cover;
