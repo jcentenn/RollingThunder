@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { AppService } from "../app.service";
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component( {
     selector: 'app-rules',
@@ -8,12 +9,13 @@ import { AppService } from "../app.service";
 } )
 export class RulesComponent implements OnInit, AfterViewInit {
 
-    constructor( private appService: AppService ) { }
+    rulesessage: string = 'Behold the Laws of Rolling Thunder';
+    constructor( private appService: AppService, private router: Router ) { }
 
     ngOnInit() {
     }
 
     ngAfterViewInit() {
-        this.appService.changeTopMessage('Behold the Laws of Rolling Thunder');
+        this.appService.changeShowTopMessage(false);              
     }
 }

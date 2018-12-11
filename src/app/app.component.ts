@@ -4,6 +4,7 @@ import { Title } from "@angular/platform-browser";
 import { MenuItem } from 'primeng/api';
 import { Menubar } from "primeng/menubar";
 import { BehaviorSubject, Observable } from "rxjs/Rx";
+import { Router, NavigationEnd } from "@angular/router";
 
 
 @Component( {
@@ -31,10 +32,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     items: MenuItem[];
 
-
     @ViewChildren( "topNav" ) divs: QueryList<any>
 
-    constructor( private appService: AppService, private titleService: Title, private renderer: Renderer2 ) { }
+    constructor( private appService: AppService, private router: Router, private titleService: Title, private renderer: Renderer2 ) { }
 
     ngAfterViewInit() {
         console.log( window.innerWidth );
@@ -45,6 +45,12 @@ export class AppComponent implements OnInit, AfterViewInit {
         this.appService.changeFavicon( 'https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png' );
         this.setTitle( this.appService.title );
         this.setItems();
+
+        this.router.events.subscribe(( event ) => {
+            if ( event instanceof NavigationEnd ) {
+                this.appService.changeShowTopMessage(true);      
+            }
+        } );
     }
 
     setItems() {

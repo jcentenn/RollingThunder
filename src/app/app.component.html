@@ -48,9 +48,11 @@
 </p-menubar>
 <!-- </div> -->
 
- <h1>
+
+
+ <h2 [hidden]="!appService.showTopMessage" class="topMessage">
    <i class="fas fa-fw fa-bolt"></i> {{appService.topMessage}} <i class="fas fa-fw fa-bolt"></i>
- </h1>
+ </h2>
   
 
 
