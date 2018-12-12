@@ -3,12 +3,12 @@ div {
 }
 
 .rules {
-	width: 100hw;
+	width: 100vw;
 	height: 90vh;
 	background-image: url(../../assets/img/Parchment-Background-Torn01.gif);
 	background-size: 100% 100%; 
 	font-size: 1em;
-	padding-left: 1.5em;
+	padding-left: 3.5em;
 }
 
 .rulesMessage {
@@ -16,7 +16,7 @@ div {
 	font-size: 2em;
 }
 
-figure {
-	background-image: url(../../assets/img/Parchment-Background-Torn01.gif);
-	background-size: 100% 100%; 
-}
+/* figure { */
+/* 	background-image: url(../../assets/img/Parchment-Background-Torn01.gif); */
+/* 	background-size: 100vw 100vh;  */
+/* } */
