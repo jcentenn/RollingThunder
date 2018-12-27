@@ -15,17 +15,21 @@ import { AppRoutingModule } from "./app-routing.module";
 import { Router } from "@angular/router";
 import { RulesComponent } from "./rules/rules.component";
 import { LandingPageComponent } from './landing-page/landing-page.component';
-
+import { FormsModule } from '@angular/forms';
+import { ChatComponent } from './chat/chat.component';
+import { ChatService } from './chat/chat.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResponsiveMenuDirective,
     RulesComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule
+    , FormsModule
     , BrowserAnimationsModule
     , HttpClientModule
     , MenuModule
@@ -34,7 +38,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     , CodeHighlighterModule
     , AppRoutingModule
   ],
-  providers: [AppService, Title],
+  providers: [AppService, ChatService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule {

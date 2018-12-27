@@ -24,7 +24,7 @@
 		"../node_modules/primeicons/primeicons.css",
         "styles.css"
       ],
-      "scripts": [],
+      "scripts": ["../node_modules/peerjs/dist/peer.js"],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

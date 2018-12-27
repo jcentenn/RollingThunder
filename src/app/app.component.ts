@@ -5,7 +5,9 @@ import { MenuItem } from 'primeng/api';
 import { Menubar } from "primeng/menubar";
 import { BehaviorSubject, Observable } from "rxjs/Rx";
 import { Router, NavigationEnd } from "@angular/router";
-
+//import * as Peer from "peerjs";
+import ObjectID from "bson-objectid";
+import * as getBrowserRTC from "get-browser-rtc";
 
 @Component( {
     selector: 'app-root',
@@ -16,6 +18,12 @@ import { Router, NavigationEnd } from "@angular/router";
 export class AppComponent implements OnInit, AfterViewInit {
     data: string;
     showNav: boolean = true;
+//    myPeerID: string;
+//    anotherID: string;
+//    myPeer;
+//    otherPeer;
+//    otherPeerID;
+//    otherConn;
 
     @HostListener( 'window:resize', ['$event'] )
     onResize( event ) {
@@ -34,7 +42,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChildren( "topNav" ) divs: QueryList<any>
 
-    constructor( private appService: AppService, private router: Router, private titleService: Title, private renderer: Renderer2 ) { }
+    constructor( private appService: AppService, private router: Router, private titleService: Title, private renderer: Renderer2 ) {
+
+    }
 
     ngAfterViewInit() {
         console.log( window.innerWidth );
@@ -42,23 +52,34 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     ngOnInit() {
         //      this.showData();
-        this.appService.changeFavicon( 'https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png' );
+        //        this.appService.changeFavicon( 'https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png' );
         this.setTitle( this.appService.title );
         this.setItems();
 
-        this.router.events.subscribe(( event ) => {
+        console.log(getBrowserRTC());
+        
+        this.router.events.subscribe( ( event ) => {
             if ( event instanceof NavigationEnd ) {
-                this.appService.changeShowTopMessage(true);      
+                this.appService.changeShowTopMessage( true );
             }
         } );
     }
+
+    onSearchChange( searchValue: string ) {
+        //        console.log( searchValue );
+        //      console.log( searchValue );
+        //        this.myConn.send('hi');
+        //this.helloStr += searchValue;
+    }
+
 
     setItems() {
         this.items = [
             { label: 'Home', icon: 'fas fa-fw fa-home', routerLink: '/' }
             , { label: 'Contact', icon: 'fas fa-fw fa-envelope' }
             , { label: 'About', icon: 'fas fa-fw fa-bolt' }
-            , { label: 'Rules', icon: 'fas fa-fw fa-info', routerLink: 'rules' }
+            , { label: 'Rules', icon: 'fas fa-fw fa-scroll', routerLink: 'rules' }
+            , { label: 'Chat', icon: 'fas fa-fw fa-mobile-alt', routerLink: 'chat' }
         ];
     }
 

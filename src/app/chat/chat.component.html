@@ -1,0 +1,21 @@
+
+<!-- <form> -->
+<!-- 	<textarea id="incoming"></textarea> -->
+<!-- 	<button type="submit">submit</button> -->
+<!-- </form> -->
+
+<span [innerHTML]="chatService.chatMessage"></span>
+<!-- <span>{{chatService.chatMessage | async}}</span> -->
+<!-- <div>{{helloStr}}</div> -->
+
+<h1>My id - {{chatService.myPeerID}}</h1>
+
+<!-- <form> -->
+<input name="otherPeerID" type="text" [(ngModel)]="otherPeerID">
+<!-- <br> -->
+<button (click)="connect()">Connect</button>
+
+<button (click)="send()">Send</button>
+<!-- <br> -->
+<!-- </form> -->
+
