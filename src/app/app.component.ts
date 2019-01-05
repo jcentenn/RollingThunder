@@ -3,7 +3,7 @@ import { AppService } from "./app.service";
 import { Title } from "@angular/platform-browser";
 import { MenuItem } from 'primeng/api';
 import { Menubar } from "primeng/menubar";
-import { BehaviorSubject, Observable } from "rxjs/Rx";
+import { BehaviorSubject, Observable } from "rxjs";
 import { Router, NavigationEnd } from "@angular/router";
 //import * as Peer from "peerjs";
 import ObjectID from "bson-objectid";

@@ -1,20 +1,20 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
-import * as Peer from "peerjs";
+import * as Peer from 'peerjs';
 
 @Injectable()
 export class ChatService {
 
-    static lobbyID: string = 'RollingThunderLobby';
+    static lobbyID = 'RollingThunderLobby';
     lobbyPeer: Peer;
-    
+
     otherConn: Peer.DataConnection;
     otherPeerID: string;
 
     chatMessageSource: BehaviorSubject<string> = new BehaviorSubject( '' );
     chatMessage: string;
     currentChatMessage: Observable<string> = this.chatMessageSource.asObservable();
-    
+
     myPeer: Peer;
     myPeerID: string;
 
@@ -29,9 +29,9 @@ export class ChatService {
     public changeChatMessage( currentChatMessage: string ) {
         this.chatMessageSource.next( currentChatMessage );
     }
-    
+
     newConn( chatService: ChatService, zone: NgZone ) {
-        let peer: Peer = new Peer( { debug: 0 } );
+        const peer: Peer = new Peer( { debug: 3 } );
 
         this.otherConn = peer.connect( ChatService.lobbyID );
         setTimeout( () => {
@@ -42,7 +42,7 @@ export class ChatService {
                 console.log( peer.id + 'disconnected' );
             } );
 
-//          Have to trigger change detection manually due to the event callback being triggered outside of Angular zone            
+//          Have to trigger change detection manually due to the event callback being triggered outside of Angular zone
             peer.on( 'connection', ( conn: Peer.DataConnection ) => {
                 conn.on( 'data', ( data ) => {
                     zone.run( () => {
