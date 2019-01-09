@@ -1,5 +1,11 @@
 <?php
-//print_r($_POST);
-$data = array('a' => 'apple', 'b' => 'banana', 'c' => 'catnip');
-echo json_encode($data);
+//echo json_encode($_POST['id']);
+
+$id = $_POST['id'];
+$path = "../chat-sessions/".$id;
+
+$file = fopen($path,"w");
+fwrite($file, $id);
+fclose($file);
+
 ?>
