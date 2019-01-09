@@ -41,7 +41,6 @@ export class ChatComponent implements OnInit {
         }, 1000 );
 
         chatService.newConn( this.chatService, this.zone );
-
     }
 
     ngOnInit() {
@@ -50,7 +49,7 @@ export class ChatComponent implements OnInit {
 
     connect() {
         this.chatService.otherConn = this.chatService.myPeer.connect( this.chatService.otherPeerID );
-        console.log(this.chatService.otherPeerID);
+//        console.log(this.chatService.otherPeerID);
 
         //        this.otherConn.send( this.myPeerID );
     }

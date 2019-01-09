@@ -1,6 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import * as Peer from 'peerjs';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class ChatService {
@@ -20,7 +21,7 @@ export class ChatService {
 
     connectedPeers: Array<Peer.DataConnection> = new Array();
 
-    constructor() {
+    constructor(private http: HttpClient) {
         this.currentChatMessage.subscribe( chatMessage => {
             this.chatMessage = chatMessage;
         } );
@@ -33,11 +34,21 @@ export class ChatService {
     newConn( chatService: ChatService, zone: NgZone ) {
         const peer: Peer = new Peer( { debug: 3 } );
 
-        this.otherConn = peer.connect( ChatService.lobbyID );
+//        this.otherConn = peer.connect( ChatService.lobbyID );
+        
         setTimeout( () => {
             this.myPeerID = peer.id;
             this.myPeer = peer;
 
+            this.http.post('/id.php', {id: peer.id}).subscribe(
+                data => {
+                    console.log(data);
+                },
+                error => {
+                    console.log(error);
+                }
+            );                    
+            
             peer.on( 'close', () => {
                 console.log( peer.id + 'disconnected' );
             } );
