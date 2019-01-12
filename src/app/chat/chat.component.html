@@ -1,4 +1,4 @@
-
+<div *ngIf="authService.loggedInStatus; else elseBlock">
 <!-- <form> -->
 <!-- 	<textarea id="incoming"></textarea> -->
 <!-- 	<button type="submit">submit</button> -->
@@ -11,12 +11,26 @@
 <h1>My id - {{chatService.myPeerID}}</h1>
 
 <!-- <form> -->
-<input name="otherPeerID" type="text" [(ngModel)]="chatService.otherPeerID">
+<!-- <input name="otherPeerID" type="text" [(ngModel)]="chatService.otherPeerID"> -->
 <!-- <br> -->
-<button (click)="connect()">Connect</button>
+<!-- <button (click)="connect()">Connect</button> -->
+
+<!-- <br> -->
+<!-- <button (click)="chat()">Chat</button> -->
+
 
 <button (click)="send()">Send</button>
 <br>
-<button (click)="upload()">Upload</button>
+<!-- <button (click)="upload()">Upload</button> -->
 <!-- </form> -->
 
+    <div id="chatlog"></div>
+    <div id="textBox" class="box" onKeyPress="return checkSubmit(event)">
+        <p align="center">
+            <textarea id="message" name="message" class="textarea" onfocus="clearContents(this);">Press enter to submit.</textarea>
+        </p>
+    </div>
+    
+</div>
+
+<ng-template #elseBlock>Please log in to use chat</ng-template>

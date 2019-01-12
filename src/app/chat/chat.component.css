@@ -2,3 +2,59 @@
 	width: 600px;
 	word-wrap: break-word;
 }
+
+/* #me { */
+/*     margin: 0; */
+/*     font-family: monospace; */
+/*     color: #FFFFFF; */
+/*     font-size: 13pt; */
+/*     background-color: #992542; */
+/* } */
+
+/* #them { */
+/*     margin: 0; */
+/*     font-family: monospace; */
+/*     color: #FFFFFF; */
+/*     font-size: 13pt; */
+/*     background-color: #63175A; */
+/* } */
+
+
+/* div.yourText { */
+/*     color: #DA4167; */
+/*     font-size: 12pt; */
+/*     font-weight: normal; */
+/*     width: 50%; */
+/*     margin-left: 30px; */
+/*     margin-top: 10px; */
+/*     float: left; */
+/* } */
+
+/* div.theirText { */
+/*     color: #8A1C7C; */
+/*     font-size: 12pt; */
+/*     width: 50%; */
+/*     margin-left: 30px; */
+/*     margin-top: 10px; */
+/*     float: left; */
+/* } */
+
+
+div.box {
+    color: #8A1C7C;
+    font-size: 12pt;
+    width: 100%;
+    position: absolute;
+    right: 30;
+    bottom: 30;
+}
+
+
+textarea {
+    width: 300px;
+    padding: 10px;
+    font-size: 12pt;
+    position: fixed;
+    bottom: 100px;
+    right: 50px;
+}

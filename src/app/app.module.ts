@@ -11,13 +11,14 @@ import { ButtonModule } from 'primeng/button';
 import { TabViewModule } from 'primeng/tabview';
 import { CodeHighlighterModule } from 'primeng/codehighlighter';
 import { ResponsiveMenuDirective } from './responsive-menu.directive';
-import { AppRoutingModule } from "./app-routing.module";
-import { Router } from "@angular/router";
-import { RulesComponent } from "./rules/rules.component";
+import { AppRoutingModule } from './app-routing.module';
+import { Router } from '@angular/router';
+import { RulesComponent } from './rules/rules.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { FormsModule } from '@angular/forms';
 import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './chat/chat.service';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ChatService } from './chat/chat.service';
     ResponsiveMenuDirective,
     RulesComponent,
     LandingPageComponent,
-    ChatComponent
+    ChatComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule
@@ -43,8 +45,8 @@ import { ChatService } from './chat/chat.service';
 })
 export class AppModule {
     constructor(router: Router) {
-        
+
     }
-    
+
 }
 

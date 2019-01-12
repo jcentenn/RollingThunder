@@ -1,13 +1,13 @@
 import { Component, OnInit, ElementRef, ViewChild, ViewChildren, QueryList, AfterViewInit, Renderer2, RendererStyleFlags2, HostListener } from '@angular/core';
-import { AppService } from "./app.service";
-import { Title } from "@angular/platform-browser";
-import { MenuItem } from 'primeng/api';
-import { Menubar } from "primeng/menubar";
-import { BehaviorSubject, Observable } from "rxjs";
-import { Router, NavigationEnd } from "@angular/router";
-//import * as Peer from "peerjs";
-import ObjectID from "bson-objectid";
-import * as getBrowserRTC from "get-browser-rtc";
+import { AppService } from './app.service';
+import { Title } from '@angular/platform-browser';
+import { Menubar } from 'primeng/menubar';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { Router, NavigationEnd } from '@angular/router';
+// import * as Peer from "peerjs";
+import ObjectID from 'bson-objectid';
+import * as getBrowserRTC from 'get-browser-rtc';
+import { AuthService } from './auth/auth.service';
 
 @Component( {
     selector: 'app-root',
@@ -17,33 +17,30 @@ import * as getBrowserRTC from "get-browser-rtc";
 
 export class AppComponent implements OnInit, AfterViewInit {
     data: string;
-    showNav: boolean = true;
+    showNav = true;
+
 //    myPeerID: string;
 //    anotherID: string;
 //    myPeer;
 //    otherPeer;
 //    otherPeerID;
 //    otherConn;
+    @ViewChild( 'topNav' ) topNav: Menubar;
+    @ViewChild( 'navButton' ) navButton: ElementRef;
+    @ViewChildren( 'topNav' ) divs: QueryList<any>;
 
     @HostListener( 'window:resize', ['$event'] )
+
     onResize( event ) {
         if ( event.target.innerWidth < 900 ) {
             console.log( 'mobile' );
-        }
-        else {
+        } else {
             console.log( 'desktop' );
         }
     }
 
-    @ViewChild( 'topNav' ) topNav: Menubar;
-    @ViewChild( 'navButton' ) navButton: ElementRef;
 
-    items: MenuItem[];
-
-    @ViewChildren( "topNav" ) divs: QueryList<any>
-
-    constructor( private appService: AppService, private router: Router, private titleService: Title, private renderer: Renderer2 ) {
-
+    constructor( private appService: AppService, private authService: AuthService, private router: Router, private titleService: Title, private renderer: Renderer2 ) {
     }
 
     ngAfterViewInit() {
@@ -54,13 +51,24 @@ export class AppComponent implements OnInit, AfterViewInit {
         //      this.showData();
         //        this.appService.changeFavicon( 'https://royaleapi.com/static/img/badge/gold-3/Bolt_03.png' );
         this.setTitle( this.appService.title );
-        this.setItems();
+        this.authService.setItems();
 
-        console.log(getBrowserRTC());
-        
+//        console.log(getBrowserRTC());
+
         this.router.events.subscribe( ( event ) => {
             if ( event instanceof NavigationEnd ) {
                 this.appService.changeShowTopMessage( true );
+
+                const topNav: Menubar = this.topNav;
+
+                topNav.model.forEach(model => {
+                    if (model.disabled !== undefined) {
+                        model.disabled = !this.authService.loggedInStatus;
+                    }
+                });
+                
+//                this.setItems();
+
             }
         } );
     }
@@ -69,18 +77,7 @@ export class AppComponent implements OnInit, AfterViewInit {
         //        console.log( searchValue );
         //      console.log( searchValue );
         //        this.myConn.send('hi');
-        //this.helloStr += searchValue;
-    }
-
-
-    setItems() {
-        this.items = [
-            { label: 'Home', icon: 'fas fa-fw fa-home', routerLink: '/' }
-            , { label: 'Contact', icon: 'fas fa-fw fa-envelope' }
-            , { label: 'About', icon: 'fas fa-fw fa-bolt' }
-            , { label: 'Rules', icon: 'fas fa-fw fa-scroll', routerLink: 'rules' }
-            , { label: 'Chat', icon: 'fas fa-fw fa-mobile-alt', routerLink: 'chat' }
-        ];
+        // this.helloStr += searchValue;
     }
 
     setTitle( newTitle: string ) {
@@ -98,28 +95,28 @@ export class AppComponent implements OnInit, AfterViewInit {
     myFunction2() {
         //      let topNav = document.getElementById("myTopnav2");
 
-        var menubarsubList: Array<HTMLElement> = this.topNav.el.nativeElement.getElementsByTagName( "p-menubarsub" );
+        const menubarsubList: Array<HTMLElement> = this.topNav.el.nativeElement.getElementsByTagName( 'p-menubarsub' );
 
 
-        for ( var menubarsub of menubarsubList ) {
-            if ( menubarsub.hasAttribute( "root" ) ) {
+        for ( const menubarsub of menubarsubList ) {
+            if ( menubarsub.hasAttribute( 'root' ) ) {
 
                 menubarsub.hidden = !menubarsub.hidden;
 
                 //              this.renderer.setStyle(menubarsub, 'display', '');
                 //              setStyle(menubarsub, 'display', 'inline');
-                /*              
+                /*
                               console.log(menubarsub.getElementsByTagName("li"));
-                              
-                              
+
+
                               if (!menubarsub.classList.contains('responsive2')) {
                                   this.renderer.addClass(menubarsub, 'responsive2');
                                   this.renderer.addClass(this.navButton.nativeElement, 'responsive2');
                 //                  this.renderer.removeStyle(menubarsub, 'display', RendererStyleFlags2.Important);
-                                  
+
                 //                  this.showNav = false;
-                                  
-                                  
+
+
                               }
                               else {
                                   this.renderer.removeClass(menubarsub, 'responsive2');
@@ -129,7 +126,7 @@ export class AppComponent implements OnInit, AfterViewInit {
             }
         }
 
-        //y.hasAttribute("bar")     
+        // y.hasAttribute("bar")
 
         //      if (topNav.className === "topnav2") {
         //          topNav.className += " responsive2";
@@ -139,11 +136,11 @@ export class AppComponent implements OnInit, AfterViewInit {
     }
 
     myFunction() {
-        var x = document.getElementById( "myTopnav" );
-        if ( x.className === "topnav" ) {
-            x.className += " responsive";
+        var x = document.getElementById( 'myTopnav' );
+        if ( x.className === 'topnav' ) {
+            x.className += ' responsive';
         } else {
-            x.className = "topnav";
+            x.className = 'topnav';
         }
     }
 }

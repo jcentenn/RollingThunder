@@ -10,7 +10,6 @@ declare var DataConnection:any;
 @Injectable()
 export class AppService {
 
-
     topMessage: string;
     title: string = 'Rolling Thunder';
     showTopMessage: boolean = true;
@@ -55,7 +54,7 @@ export class AppService {
 //    }
 
 
-    constructor( private http: HttpClient ) {
+    constructor( private http: HttpClient) {
         this.currentTopMessage.subscribe( topMessage => {
             this.topMessage = topMessage;
         } );
