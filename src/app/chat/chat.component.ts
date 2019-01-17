@@ -4,6 +4,7 @@ import { AppService } from '../app.service';
 import * as Peer from 'peerjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
+//import { translate as Translate } from 'google-translate-api';
 
 const SOH = '\u0001';
 const STX = '\u0002';
@@ -27,8 +28,19 @@ export class ChatComponent implements OnInit {
     existingPeerID: string;
 
 // tslint:disable-next-line: max-line-length
-    constructor( public chatService: ChatService, public authService: AuthService, public appService: AppService, public zone: NgZone, private http: HttpClient ) {
+    constructor( public chatService: ChatService, public authService: AuthService, public appService: AppService, public zone: NgZone, private http: HttpClient) {
 
+        
+//        translate('Ik spreek Engels', {to: 'en'}).then(res => {
+//            console.log(res.text);
+//            //=> I speak English
+//            console.log(res.from.language.iso);
+//            //=> nl
+//        }).catch(err => {
+//            console.error(err);
+//        });
+        
+        
         if (authService.loggedInStatus) {
             this.chat();
         }
@@ -40,7 +52,7 @@ export class ChatComponent implements OnInit {
 
     send() {
         this.existingConns.forEach( ( existingConn, key ) => {
-            const message = 'Message from ' + this.chatService.myPeerID + ' at ' + Date.now();
+            const message = 'Hi my name is ' + this.chatService.myPeerID + ' at ' + Date.now();
             existingConn.send(message);
       } );
     }

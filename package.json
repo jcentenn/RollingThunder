@@ -38,7 +38,8 @@
     "sync-request": "latest",
     "web-animations-js": "^2.3.1",
     "write-file": "latest",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "google-translate-api": "latest"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^7.1.1",

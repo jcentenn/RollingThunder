@@ -29,7 +29,7 @@ export class AuthService {
 //            , { label: 'Contact', icon: 'fas fa-fw fa-envelope' }
 //            , { label: 'About', icon: 'fas fa-fw fa-bolt', disabled: !this.loggedInStatus }
             , { label: 'Rules', icon: 'fas fa-fw fa-scroll', routerLink: 'rules' }
-//            , { label: 'Chat', icon: 'fas fa-fw fa-mobile-alt', routerLink: 'chat', disabled: !this.loggedInStatus }
+            , { label: 'Chat', icon: 'fas fa-fw fa-mobile-alt', routerLink: 'chat', disabled: !this.loggedInStatus }
 //            , { label: 'Login', icon: 'fas fa-fw fa-sign-in-alt', routerLink: 'auth' }
         ];
     }
