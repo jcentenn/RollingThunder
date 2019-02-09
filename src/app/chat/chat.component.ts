@@ -4,7 +4,13 @@ import { AppService } from '../app.service';
 import * as Peer from 'peerjs';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from '../auth/auth.service';
-//import { translate as Translate } from 'google-translate-api';
+import { TranslateService } from './translate.service';
+import * as tokenlib from '../../assets/js/token.js';
+import * as languages from '../../assets/js/languages.js';
+import * as querystring from '../../../node_modules/querystring';
+
+// import { translate as Translate } from 'google-translate-api';
+// import { token } from 'google-translate-token';
 
 const SOH = '\u0001';
 const STX = '\u0002';
@@ -28,9 +34,9 @@ export class ChatComponent implements OnInit {
     existingPeerID: string;
 
 // tslint:disable-next-line: max-line-length
-    constructor( public chatService: ChatService, public authService: AuthService, public appService: AppService, public zone: NgZone, private http: HttpClient) {
+    constructor( public chatService: ChatService, public authService: AuthService, public appService: AppService, public zone: NgZone, private http: HttpClient, public translateService: TranslateService) {
 
-        
+
 //        translate('Ik spreek Engels', {to: 'en'}).then(res => {
 //            console.log(res.text);
 //            //=> I speak English
@@ -39,8 +45,8 @@ export class ChatComponent implements OnInit {
 //        }).catch(err => {
 //            console.error(err);
 //        });
-        
-        
+
+
         if (authService.loggedInStatus) {
             this.chat();
         }
@@ -55,6 +61,81 @@ export class ChatComponent implements OnInit {
             const message = 'Hi my name is ' + this.chatService.myPeerID + ' at ' + Date.now();
             existingConn.send(message);
       } );
+    }
+
+    translate() {
+        const text = 'hello there';
+//        token.get('Hello').then(console.log);
+        this.translateService.updateTKK().subscribe(
+                tkkData => {
+                    const codeArray: Array<string> = tkkData.match(/tkk:'.*?'/g);
+                    let tkk: string;
+
+                    if (codeArray) {
+                        let code = codeArray[0];
+                        code = code.replace(/'/g, '"');
+                        code = code.replace('tkk', '"tkk"');
+                        tkk = JSON.parse('{' + code + '}').tkk;
+
+//                        window.TKK = tkk;
+//                        console.log(tkk);
+
+                        let tk = tokenlib.sM(text, tkk);
+                        tk = tk.replace('&tk=', '');
+
+                        const token = JSON.parse('{"name": "tk", "value":' + tk + '}');
+
+//                        console.log(token);
+                        const opts = {from: 'en', to: 'ru'};
+
+                        let e;
+                        [opts.from, opts.to].forEach(function (lang) {
+                            if (lang && !languages.isSupported(lang)) {
+                                e = new Error();
+                                e.code = 400;
+                                e.message = 'The language \'' + lang + '\' is not supported';
+                            }
+                        });
+
+                        if (e) {
+                            console.log(e);
+                        }
+
+                        opts.from = opts.from || 'auto';
+                        opts.to = opts.to || 'en';
+
+                        opts.from = languages.getCode(opts.from);
+                        opts.to = languages.getCode(opts.to);
+
+
+
+                        let url = 'https://translate.google.com/translate_a/single';
+                        const data = {
+                            client: 't',
+                            sl: opts.from,
+                            tl: opts.to,
+                            hl: opts.to,
+                            dt: ['at', 'bd', 'ex', 'ld', 'md', 'qca', 'rw', 'rm', 'ss', 't'],
+                            ie: 'UTF-8',
+                            oe: 'UTF-8',
+                            otf: 1,
+                            ssel: 0,
+                            tsel: 0,
+                            kc: 7,
+                            q: text
+                        };
+
+                        data[token.name] = token.value;
+
+                        url = url + '?' + querystring.stringify(data);
+
+
+                        console.log(url);
+
+
+
+                    }
+                });
     }
 
     chat() {
@@ -115,7 +196,7 @@ export class ChatComponent implements OnInit {
 
                     const pingConn = peer.connect(incomingID);
                     this.existingConns.set(pingConn.peer, pingConn);
-//                  Have to trigger change detection manually due to the event callback being triggered outside of Angular zone                        
+//                  Have to trigger change detection manually due to the event callback being triggered outside of Angular zone
                 } else {
                     this.zone.run( () => {
                         this.chatService.changeChatMessage( data );

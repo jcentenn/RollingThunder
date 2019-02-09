@@ -39,7 +39,7 @@
     "web-animations-js": "^2.3.1",
     "write-file": "latest",
     "zone.js": "^0.8.19",
-    "google-translate-api": "latest"
+    "querystring": "latest"
   },
   "devDependencies": {
     "@angular-builders/custom-webpack": "^7.1.1",
@@ -64,6 +64,7 @@
     "tslint": "^5.12.0",
     "typescript": "3.1.6",
     "typescript-tslint-plugin": "^0.2.1",
-    "http-auth": "latest"
+    "http-auth": "latest",
+    "cors-anywhere": "latest"
   }
 }

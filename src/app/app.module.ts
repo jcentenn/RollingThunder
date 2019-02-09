@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './chat/chat.service';
 import { AuthComponent } from './auth/auth.component';
+import { TranslateService } from './chat/translate.service';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,7 @@ import { AuthComponent } from './auth/auth.component';
     , CodeHighlighterModule
     , AppRoutingModule
   ],
-  providers: [AppService, ChatService, Title],
+  providers: [AppService, ChatService, TranslateService, Title],
   bootstrap: [AppComponent]
 })
 export class AppModule {

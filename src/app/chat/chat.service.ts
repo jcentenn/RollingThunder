@@ -2,6 +2,7 @@ import { Injectable, NgZone } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import * as Peer from 'peerjs';
 import { HttpClient } from '@angular/common/http';
+import { TranslateService } from './translate.service';
 
 const SOH = '\u0001';
 const STX = '\u0002';
@@ -32,7 +33,7 @@ export class ChatService {
 
     connectedPeers: Array<Peer.DataConnection> = new Array();
 
-    constructor( public http: HttpClient ) {
+    constructor( public http: HttpClient, translateService: TranslateService ) {
         this.currentChatMessage.subscribe( chatMessage => {
             this.chatMessage = chatMessage;
         } );
