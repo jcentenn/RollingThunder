@@ -20,6 +20,8 @@ import { ChatComponent } from './chat/chat.component';
 import { ChatService } from './chat/chat.service';
 import { AuthComponent } from './auth/auth.component';
 import { TranslateService } from './chat/translate.service';
+import { HelpComponent } from './help/help.component';
+import { ClanWarsComponent } from './clan-wars/clan-wars.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { TranslateService } from './chat/translate.service';
     RulesComponent,
     LandingPageComponent,
     ChatComponent,
-    AuthComponent
+    AuthComponent,
+    HelpComponent,
+    ClanWarsComponent
   ],
   imports: [
     BrowserModule

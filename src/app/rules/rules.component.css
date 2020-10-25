@@ -6,15 +6,13 @@ div {
 	width: 100vw;
 	height: 90vh;
 	background-image: url(../../assets/img/Parchment-Background-Torn01.gif);
-	background-size: 100% 100%; 
+	background-size: 100% 100%;
+	overflow: auto;
 	font-size: 1em;
 	padding-left: 3.5em;
 }
 
-.rulesMessage {
-	padding-top: 1em;
-	font-size: 2em;
-}
+
 
 /* figure { */
 /* 	background-image: url(../../assets/img/Parchment-Background-Torn01.gif); */

@@ -29,7 +29,9 @@ export class AuthService {
 //            , { label: 'Contact', icon: 'fas fa-fw fa-envelope' }
 //            , { label: 'About', icon: 'fas fa-fw fa-bolt', disabled: !this.loggedInStatus }
             , { label: 'Rules', icon: 'fas fa-fw fa-scroll', routerLink: 'rules' }
-            , { label: 'Chat', icon: 'fas fa-fw fa-mobile-alt', routerLink: 'chat', disabled: !this.loggedInStatus }
+            , { label: 'Clan Wars', icon: 'fa-fw fas sword3', routerLink: 'clan-wars' }
+            , { label: 'Help', icon: 'fas fa-question-circle', routerLink: 'help' }
+//            , { label: 'Chat', icon: 'fas fa-fw fa-mobile-alt', routerLink: 'cha, disabled: !this.loggedInStatus }
 //            , { label: 'Login', icon: 'fas fa-fw fa-sign-in-alt', routerLink: 'auth' }
         ];
     }

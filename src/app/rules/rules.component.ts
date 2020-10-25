@@ -9,7 +9,7 @@ import { Router, NavigationEnd } from "@angular/router";
 } )
 export class RulesComponent implements OnInit, AfterViewInit {
 
-    rulesessage: string = 'Behold the Laws of Rolling Thunder';
+    divMessage: string = 'Behold the Laws of Rolling Thunder';
     constructor( private appService: AppService, private router: Router ) { }
 
     ngOnInit() {
